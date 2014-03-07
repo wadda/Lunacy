@@ -1,20 +1,17 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from time import gmtime, strftime
-#
-#import calendar, datetime
 import ephem
 import wx.calendar
-#here = ephem.Observer()
-#here.lat = '-17.576166667'
-#here.lon = '-149.618575000'
+# Test
+# here = ephem.Observer()
+# here.lat = '-17.576166667'
+# here.lon = '-149.618575000'
 
 
 class App(wx.App):
-	def __init__(self, redirect=_defRedirect, filename=None, useBestVisual=False, clearSigInt=True):
-		super(App, self).__init__(redirect=_defRedirect, filename=None, useBestVisual=False, clearSigInt=True)
-		self.frame = MyFrame("Lunacy", (50, 60), (640, 220))
-
 	def OnInit(self):
+		self.frame = MyFrame("Lunacy", (50, 60), (640, 220))
 		self.frame.Show()
 		self.SetTopWindow(self.frame)
 		return True
@@ -23,7 +20,6 @@ class App(wx.App):
 ##########################################################################
 ## Class MyFrame
 ###########################################################################
-
 
 class MyFrame(wx.Frame):
 	def __init__(self, title, pos, size):
@@ -40,7 +36,6 @@ class MyFrame(wx.Frame):
 		fgSizer1.SetFlexibleDirection(wx.BOTH)
 		fgSizer1.SetNonFlexibleGrowMode(wx.FLEX_GROWMODE_SPECIFIED)
 
-		# noinspection PyPep8
 		cal = wx.calendar.CalendarCtrl(self, wx.ID_ANY, wx.DefaultDateTime, wx.DefaultPosition, wx.DefaultSize,
 		                               wx.calendar.CAL_SHOW_HOLIDAYS |
 		                               wx.calendar.CAL_SHOW_SURROUNDING_WEEKS |
@@ -55,7 +50,7 @@ class MyFrame(wx.Frame):
 
 		fgSizer1.Add(self.cal, 0, wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_RIGHT | wx.ALL, 5)
 
-		fgSizer1.AddSpacer((0, 5), 1, wx.EXPAND, 5)
+		fgSizer1.AddSpacer(( 0, 5), 1, wx.EXPAND, 5)
 
 		gSizer1.Add(fgSizer1, 1, 0, 0)
 
@@ -265,9 +260,9 @@ class MyFrame(wx.Frame):
 
 		#
 		# Moon Phase
-		#TODO Clearly these numbers are pulled out of a hat.
-		#they are a very rough approximation of the phases and
-		#do not account for waxing and waning
+		# TODO Clearly these numbers are pulled out of a hat.
+		# they are a very rough approximation of the phases and
+		# do not account for waxing and waning
 		phasepercent = int(moon.moon_phase * 100)
 		self.phasepercent.SetLabel(str(phasepercent) + " %")
 
